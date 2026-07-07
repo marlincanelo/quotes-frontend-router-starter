@@ -11,6 +11,10 @@
 //   https://reactrouter.com/start/declarative/url-values#useparams
 // TODO (Part 3): bring in the quotes data
 
+import { useParams } from "react-router"
+import quotes from "../data/quotes"
+
+
 function QuoteDetail() {
   // TODO (Part 3): read the id out of the URL using the params hook.
   //
@@ -25,8 +29,30 @@ function QuoteDetail() {
   //   short message instead of crashing. Don't assume a match exists
   //   before reading its text or author.
 
+  //get id
+    const {id} = useParams()
+    //conver to num
+    const quoteid = Number(id)
+
+    // find quote requested from url
+    const quote = quotes.find((quote) => {
+      return quote.id === quoteid
+    })
+//if not found
+    if(!quote) {
+      return (
+        <h1>Quote Not Found </h1>
+      )
+    }
+
   return (
     <div className="app">
+    <h1> Quote Number: {id}</h1>
+    {/* display the quote that was found */}
+    <p> {quote.text} - {quote.author} </p>
+    
+
+
       {/* TODO (Part 3): render the quote's text and author */}
       {/* TODO (Part 3): a link back to the home page */}
     </div>

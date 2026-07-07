@@ -14,32 +14,32 @@
 // TODO (Part 4): bring in the AddQuote page
 // TODO (Part 5): bring in the NotFound page
 
+//route definer
+import { Routes, Route } from "react-router";
+
+import Navbar from "./components/Navbar"
+import Home from "./pages/Home"
+import QuoteDetail from "./pages/QuoteDetail"
+import AddQuote from "./pages/AddQuote"
+import NotFound from "./pages/NotFound"
+
+
+
+
+
+
 function AppRoutes() {
   return (
     <>
-      {/* TODO (Part 2): render the navbar here, above your routes,
-          so it shows no matter which page is active */}
+       <Navbar/> 
+      <Routes> 
+        <Route path ="/" element={<Home/>}> </Route>
+        <Route path ="/quotes/:id" element={<QuoteDetail/>}> </Route>
+        <Route path ="/quotes/new" element={<AddQuote/>}> </Route>
+        <Route path ="/" element={<NotFound/>}> </Route>
+      </Routes>
 
-      {/*
-        TODO: define your routes below.
-
-        Part 1 — Home renders at the root path "/". This is an
-          "index" route: it renders at the parent's own path
-          instead of a sub-path.
-
-        Part 3 — QuoteDetail renders at a dynamic path that captures
-          an id from the URL (a "path parameter").
-
-        Part 4 — AddQuote renders at a fixed path.
-
-        Part 5 — NotFound catches anything that didn't match any
-          route above. It must come LAST, or it swallows every
-          route below it.
-
-        Docs: https://reactrouter.com/start/declarative/routing
-      */}
     </>
-  )
-}
-
-export default AppRoutes
+  );
+  }
+export default AppRoutes;
